@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"github.com/bielzindaagua/microservices/order/config "
-	"github.com/bielzindaagua/microservices/order/internal/adapters/db"
-	"github.com/bielzindaagua/microservices/order/internal/adapters/grpc"
+	"github.com/bielzindaagua/microservices/order/config"
+	db "github.com/bielzindaagua/microservices/order/internal/adapters/db"
+	grpc "github.com/bielzindaagua/microservices/order/internal/adapters/grpc"
 	payment_adapter "github.com/bielzindaagua/microservices/order/internal/adapters/payment"
 	"github.com/bielzindaagua/microservices/order/internal/application/core/api"
 )
@@ -15,7 +15,7 @@ func main() {
 	if err != nil {
 		log.Fatalf(" Failed to connect to database . Error : %v", err)
 	}
-	apaymentAdapter, err := payment_adapter.NewAdapter(config.GetPaymentServiceUrl())
+	paymentAdapter, err := payment_adapter.NewAdapter(config.GetPaymentServiceUrl())
 	if err != nil {
 		log.Fatalf(" Failed to initialize payment stub . Error : %v", err)
 	}
